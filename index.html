@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NKOCET - Student Associations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 1.5rem 5%;
+            box-shadow: 0 4px 20px rgba(255, 193, 7, 0.3);
+            border-bottom: 3px solid #ffc107;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .college-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.5);
+            overflow: hidden;
+            background: white;
+        }
+
+        .college-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .college-info h1 {
+            font-size: 2rem;
+            color: #ffc107;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+
+        .college-info p {
+            color: #cccccc;
+            font-size: 1rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 5% 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffc107 0%, #ffeb3b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .associations-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        .associations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .association-card {
+            background: linear-gradient(145deg, #2d2d2d, #1f1f1f);
+            border: 2px solid #333;
+            border-radius: 15px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .association-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .association-card:hover::before {
+            left: 100%;
+        }
+
+        .association-card:hover {
+            transform: translateY(-10px);
+            border-color: #ffc107;
+            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
+            background: linear-gradient(145deg, #333, #2d2d2d);
+        }
+
+        .association-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .association-card:hover .association-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .association-card h3 {
+            font-size: 1.8rem;
+            color: #ffc107;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .association-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .learn-more-btn {
+            background: #ffc107;
+            color: #1a1a1a;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .learn-more-btn:hover {
+            background: #ffca28;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        .footer {
+            background: #0a0a0a;
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 3px solid #ffc107;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: #ffc107;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffca28;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .college-info h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .associations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="college-logo">
+                    <img src="F:\kk\nkocet logo.png.webp" alt="NKOCET Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size:2rem;font-weight:bold;color:#1a1a1a;background:#ffc107;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:50%;\'>NK</div>'">
+                </div>
+                <div class="college-info">
+                    <h1>NKOCET</h1>
+                    <p>Student Associations Portal</p>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#associations">Associations</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>Welcome to NKOCET Student Associations</h2>
+        <p>Empowering students through collaboration, innovation, and leadership. Join our vibrant community of associations and make your mark in college life.</p>
+    </section>
+
+    <section class="associations-container" id="associations">
+        <div class="associations-grid">
+            <div class="association-card" onclick="showAssociation('CSE')">
+            
+                 <a href="C:\Users\morer\cep-cesa.html"> 
+                    <h3>Computer Science Student Association(CSESA)</h3>
+                <p>..........................</p>
+                <button class="learn-more-btn">Learn More</button></a>
+            </div>
+
+            <div class="association-card" onclick="showAssociation('MESA')">
+            
+              <a href="C:\Users\morer\cep-mesa.html">  
+                <h3>Mechanical Engineering Student Association(MESA)</h3>
+                <p>..........................</p>
+                <button class="learn-more-btn">Learn More</button></a>
+            </div>
+
+            <div class="association-card" onclick="showAssociation('esa')">
+            
+                <h3>electrical student association</h3>
+                <p>..........................</p>
+                <button class="learn-more-btn">Learn More</button>
+            </div>
+
+            <div class="association-card" onclick="showAssociation('csa')">
+                
+                <h3>civil student association</h3>
+                <p>..........................</p>
+                <button class="learn-more-btn" >Learn More</button>
+            </div>
+
+            <div class="association-card" onclick="showAssociation('entcsa')">
+                
+                <h3>entc student association</h3>
+                <p>..........................</p>
+                <button class="learn-more-btn">Learn More</button>
+            </div>
+
+            <div class="association-card" onclick="showAssociation('aisa')">
+                
+                <h3>Aids student association</h3>
+                <p>.........................</p>
+                <button class="learn-more-btn">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 NKOCET - Nagesh karajgi Orchid College of Engineering & Technology</p>
+        <p>Building Future Leaders Through Student Engagement</p>
+        <div class="footer-links">
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#achievements">Achievements</a>
+        </div>
+    </footer>
+
+   
+</body>
+</html>
