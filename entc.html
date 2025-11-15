@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics & Telecommunication Association - NKOCET</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 1.5rem 5%;
+            box-shadow: 0 4px 20px rgba(255, 193, 7, 0.3);
+            border-bottom: 3px solid #ffc107;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .college-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.5);
+            overflow: hidden;
+            background: white;
+        }
+
+        .college-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .college-info h1 {
+            font-size: 1.5rem;
+            color: #ffc107;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+
+        .college-info p {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05));
+            padding: 4rem 5%;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 193, 7, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '📡';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.03;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-banner h1 {
+            font-size: 3rem;
+            color: #ffc107;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-icon {
+            font-size: 3.5rem;
+            animation: signal 2s infinite;
+        }
+
+        @keyframes signal {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .hero-banner p {
+            font-size: 1.3rem;
+            color: #cccccc;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ffc107;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffc107, transparent);
+        }
+
+        .about-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .objective-card {
+            background: linear-gradient(145deg, #2d2d2d, #1f1f1f);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .objective-card:hover::before {
+            left: 100%;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffc107;
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.2);
+        }
+
+        .objective-card h3 {
+            color: #ffc107;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .objective-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .event-card {
+            background: linear-gradient(145deg, #2d2d2d, #1f1f1f);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffc107;
+            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
+        }
+
+        .event-header {
+            background: linear-gradient(135deg, #ffc107, #ffca28);
+            padding: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .event-date {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .event-body {
+            padding: 1.5rem;
+        }
+
+        .event-body p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .event-footer {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .register-btn {
+            background: #ffc107;
+            color: #1a1a1a;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .register-btn:hover {
+            background: #ffca28;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .team-member {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #ffc107;
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ffc107, #ffca28);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.3);
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            color: #ffc107;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-contact {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .activities-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .activity-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #ffc107;
+            transition: all 0.3s ease;
+        }
+
+        .activity-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .activity-item h4 {
+            color: #ffc107;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-item p {
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+
+        .labs-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .lab-card {
+            background: linear-gradient(145deg, #2d2d2d, #1f1f1f);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffc107;
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.2);
+        }
+
+        .lab-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lab-card h3 {
+            color: #ffc107;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .lab-card ul {
+            color: #b0b0b0;
+            line-height: 1.8;
+            padding-left: 1.5rem;
+        }
+
+        .specializations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .spec-card {
+            background: rgba(255, 193, 7, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .spec-card:hover {
+            background: rgba(255, 193, 7, 0.08);
+            transform: scale(1.05);
+        }
+
+        .spec-card h4 {
+            color: #ffc107;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .spec-card p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05));
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .cta-section h2 {
+            color: #ffc107;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #ffc107;
+            color: #1a1a1a;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #ffca28;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffc107;
+            padding: 1rem 2.5rem;
+            border: 2px solid #ffc107;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 193, 7, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            background: #0a0a0a;
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 3px solid #ffc107;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero-banner h1 {
+                font-size: 2rem;
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="college-logo">
+                    <img src="nkocet logo.png.webp" alt="NKOCET Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size:2rem;font-weight:bold;color:#1a1a1a;background:#ffc107;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:50%;\'>NK</div>'">
+                </div>
+                <div class="college-info">
+                    <h1>NKOCET</h1>
+                    <p>Electronics & Telecommunication Association</p>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#labs">Labs</a></li>
+                    <li><a href="#specializations">Specializations</a></li>
+                    <li><a href="index.html">← Back</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <h1><span class="hero-icon">📡</span> Electronics & Telecommunication Association</h1>
+        <p>Connecting the world through wireless communication, IoT, embedded systems, and next-generation networks</p>
+    </section>
+
+    <section class="content-section" id="about">
+        <div class="about-section">
+            <h2 class="section-title">About Us</h2>
+            <p>The Electronics & Telecommunication Engineering Association at NKOCET is dedicated to fostering innovation in communication systems, signal processing, embedded systems, and wireless technologies. We empower students with cutting-edge knowledge in both electronics and telecommunication domains.</p>
+            <p>From analog circuits to 5G networks, from microcontrollers to satellite communication, our association provides comprehensive exposure to all aspects of E&TC engineering. We emphasize hands-on learning through projects, workshops, competitions, and industry collaborations.</p>
+        </div>
+
+        <h2 class="section-title">Our Objectives</h2>
+        <div class="objectives-grid">
+            <div class="objective-card">
+                <h3>📡 Communication Systems</h3>
+                <p>Master wireless communication, mobile networks, satellite systems, optical fiber, and 5G/6G technologies.</p>
+            </div>
+            <div class="objective-card">
+                <h3>🤖 Embedded Systems</h3>
+                <p>Develop expertise in microcontrollers, ARM processors, RTOS, IoT devices, and embedded programming.</p>
+            </div>
+            <div class="objective-card">
+                <h3>📊 Signal Processing</h3>
+                <p>Learn digital signal processing, image processing, audio processing, and AI-based signal analysis.</p>
+            </div>
+            <div class="objective-card">
+                <h3>🔌 VLSI Design</h3>
+                <p>Explore chip design, digital circuit design, verification, and semiconductor technology.</p>
+            </div>
+            <div class="objective-card">
+                <h3>🌐 IoT & Networks</h3>
+                <p>Build smart IoT applications, sensor networks, cloud integration, and Industry 4.0 solutions.</p>
+            </div>
+            <div class="objective-card">
+                <h3>🎓 Research & Innovation</h3>
+                <p>Encourage research in emerging areas like AI in communication, quantum computing, and neuromorphic systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="events">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="events-container">
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-date">📅 November 28-30, 2024</div>
+                    <h3>TechWave 2024</h3>
+                </div>
+                <div class="event-body">
+                    <p>Annual E&TC technical festival featuring circuit design, PCB design competition, robotics challenge, IoT project expo, and paper presentations. Prize pool of ₹65,000!</p>
+                    <p><strong>Venue:</strong> E&TC Labs<br><strong>Events:</strong> 8+ competitions</p>
+                </div>
+                <div class="event-footer">
+                    <button class="register-btn" onclick="alert('Registration starts November 15! Contact E&TC Department.')">Register Now</button>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-date">📅 December 12-14, 2024</div>
+                    <h3>Embedded Systems Workshop</h3>
+                </div>
+                <div class="event-body">
+                    <p>Intensive hands-on training on Arduino, ESP32, Raspberry Pi, sensors, actuators, and IoT project development from scratch to deployment.</p>
+                    <p><strong>Duration:</strong> 3 days<br><strong>Project:</strong> Build your own IoT device</p>
+                </div>
+                <div class="event-footer">
+                    <button class="register-btn" onclick="alert('Limited kits available! Register at E&TC office.')">Register Now</button>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-date">📅 December 22, 2024</div>
+                    <h3>Telecom Network Center Visit</h3>
+                </div>
+                <div class="event-body">
+                    <p>Educational visit to a mobile network operations center to understand BSS, MSC, base stations, and modern telecom infrastructure.</p>
+                    <p><strong>Transport:</strong> College provided<br><strong>Duration:</strong> Full day</p>
+                </div>
+                <div class="event-footer">
+                    <button class="register-btn" onclick="alert('Register by December 12. Limited to 50 students!')">Register Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="labs">
+        <h2 class="section-title">Our Laboratories</h2>
+        <div class="labs-section">
+            <div class="lab-card">
+                <div class="lab-icon">🔌</div>
+                <h3>Analog Electronics Lab</h3>
+                <ul>
+                    <li>Oscilloscopes & Multimeters</li>
+                    <li>Function Generators</li>
+                    <li>Amplifier Circuits</li>
+                    <li>Op-Amp Applications</li>
+                    <li>Power Supplies</li>
+                </ul>
+            </div>
+
+            <div class="lab-card">
+                <div class="lab-icon">💻</div>
+                <h3>Digital Electronics Lab</h3>
+                <ul>
+                    <li>Logic Gates & Trainers</li>
+                    <li>Counters & Registers</li>
+                    <li>FPGA Development Boards</li>
+                    <li>VHDL/Verilog Tools</li>
+                    <li>Digital Circuit Design</li>
+                </ul>
+            </div>
+
+            <div class="lab-card">
+                <div class="lab-icon">🤖</div>
+                <h3>Microcontroller Lab</h3>
+                <ul>
+                    <li>8051 Microcontroller Kits</li>
+                    <li>Arduino & ESP32 Boards</li>
+                    <li>Raspberry Pi Systems</li>
+                    <li>Sensors & Actuators</li>
+                    <li>Embedded C Programming</li>
+                </ul>
+            </div>
+
+            <div class="lab-card">
+                <div class="lab-icon">📡</div>
+                <h3>Communication Lab</h3>
+                <ul>
+                    <li>Amplitude Modulation</li>
+                    <li>Frequency Modulation</li>
+                    <li>PAM, PWM, PPM</li>
+                    <li>Antenna Measurements</li>
+                    <li>Fiber Optic Kits</li>
+                </ul>
+            </div>
+
+            <div class="lab-card">
+                <div class="lab-icon">📊</div>
+                <h3>Signal Processing Lab</h3>
+                <ul>
+                    <li>MATLAB & Simulink</li>
+                    <li>DSP Processors</li>
+                    <li>Audio Processing</li>
+                    <li>Image Processing Tools</li>
+                    <li>Filter Design Software</li>
+                </ul>
+            </div>
+
+            <div class="lab-card">
+                <div class="lab-icon">🌐</div>
+                <h3>IoT & Networks Lab</h3>
+                <ul>
+                    <li>IoT Development Kits</li>
+                    <li>Cloud Platforms (AWS IoT)</li>
+                    <li>Wireless Modules</li>
+                    <li>Network Simulators</li>
+                    <li>Smart Home Prototypes</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="specializations">
+        <h2 class="section-title">Areas of Specialization</h2>
+        <div class="specializations">
+            <div class="spec-card">
+                <h4>📱 Wireless Communication</h4>
+                <p>5G/6G, mobile networks, wireless protocols, and antenna design</p>
+            </div>
+            <div class="spec-card">
+                <h4>🤖 Embedded Systems</h4>
+                <p>Microcontrollers, RTOS, IoT devices, and embedded software</p>
+            </div>
+            <div class="spec-card">
+                <h4>🔌 VLSI Design</h4>
+                <p>Digital circuit design, chip verification, and semiconductor tech</p>
+            </div>
+            <div class="spec-card">
+                <h4>📊 Signal Processing</h4>
+                <p>DSP, image processing, speech recognition, and AI algorithms</p>
+            </div>
+            <div class="spec-card">
+                <h4>🌐 IoT & Cloud</h4>
+                <p>Smart devices, sensor networks, edge computing, and analytics</p>
+            </div>
+            <div class="spec-card">
+                <h4>📡 RF Engineering</h4>
+                <p>Radio frequency design, microwave engineering, and radar systems</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Regular Activities</h2>
+        <div class="activities-list">
+            <div class="activity-item">
+                <h4>Weekly Tech Talks</h4>
+                <p>Sessions on latest developments in 5G, IoT, AI in communication, and emerging technologies.</p>
+            </div>
+            <div class="activity-item">
+                <h4>Circuit Design Challenges</h4>
+                <p>Monthly competitions in analog/digital circuit design, PCB layout, and troubleshooting skills.</p>
+            </div>
+            <div class="activity-item">
+                <h4>Microcontroller Projects</h4>
+                <p>Hands-on sessions for building IoT projects, robotics, and embedded system applications.</p>
+            </div>
+            <div class="activity-item">
+                <h4>Project Mentorship</h4>
+                <p>Guidance for major projects in communication, signal processing, and embedded domains.</p>
+            </div>
+            <div class="activity-item">
+                <h4>Industry Expert Sessions</h4>
+                <p>Guest lectures by professionals from telecom companies, chip designers, and R&D experts.</p>
+            </div>
+            <div class="activity-item">
+                <h4>Software Training</h4>
+                <p>Workshops on MATLAB, Proteus, Keil, MPLAB, Xilinx, and PCB design tools.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="team">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-avatar">👨‍💻</div>
+                <div class="member-name">President Name</div>
+                <div class="member-role">President</div>
+                <div class="member-contact">president.entc@nkocet.edu</div>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">👩‍💻</div>
+                <div class="member-name">Vice President Name</div>
+                <div class="member-role">Vice President</div>
+                <div class="member-contact">vp.entc@nk
